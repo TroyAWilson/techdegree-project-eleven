@@ -1,28 +1,61 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
   height: 150px;
   padding: 20px;
+}
+.main-search{
+  width: 25%;
+  height: 15%;
+  margin: 30px;
+  margin-top: 50px;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px black solid;
+  background-color: whitesmoke;
+}
+.search-button{
+  background-color: #3F8ABF;
   color: white;
+  border: none;
+  margin: 0 5px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  transition: .5s ease-out;
+  font-size: 1.15em;
+}
+.search-button:hover{
+  cursor: pointer;
+  background-color: #bf3f65;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* This is the animate for the spinning react logo keeping it here for
+  personal note
+ */
+
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+} */
+
+
+/* @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */
