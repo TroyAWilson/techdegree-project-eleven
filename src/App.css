@@ -29,6 +29,21 @@
   cursor: pointer;
   background-color: #bf3f65;
 }
+.results-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin:50px;
+  padding: 25px;
+  overflow: hidden;
+}
+.images-container{
+  display: flex;
+  max-width: 31.7%;
+  margin: 10px;
+}
+.images-container img{
+  overflow: hidden;
+}
 
 
 

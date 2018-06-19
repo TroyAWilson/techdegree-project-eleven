@@ -5,7 +5,7 @@ import NoResultsFound from './components/No-results-found';
 import Results from './components/Results';
 import './App.css';
 
-let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5af9c37d3ce5393a73913ec211e7da81&per_page=12&format=json&nojsoncallback=1&auth_token=72157668255059277-2bb26324c333663f&api_sig=708b08b7546dde072435a9b32eaeb651"
+let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5af9c37d3ce5393a73913ec211e7da81&safe_search=&per_page=12&format=json&nojsoncallback=1&auth_token=72157668255059277-2bb26324c333663f&api_sig=2cb341fbde6895d166e0e8c80572f60e"
 
 class App extends Component {
 
@@ -39,7 +39,6 @@ class App extends Component {
           <Buttons />
         </header>
         <main className="App-main">
-          <NoResultsFound />
           <Results data={this.state.pictures} />
         </main>
       </div>

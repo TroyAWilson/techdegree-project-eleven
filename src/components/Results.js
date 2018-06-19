@@ -34,7 +34,7 @@
         <Images url = {"https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + ".jpg"} />
       );
       return (
-        <div>
+        <div className="results-container">
           {pictures}
         </div>
       );
