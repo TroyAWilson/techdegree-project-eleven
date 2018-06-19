@@ -1,16 +1,10 @@
-//API key
-//16469998c647e937d782878851dbe5d2
-//Secret?
-//7825fdf64c88d12b
-
-
-
 import React, { Component } from 'react';
 import Search from './components/Search';
 import Buttons from './components/Buttons';
 import NoResultsFound from './components/No-results-found';
 import Results from './components/Results';
 import './App.css';
+
 
 class App extends Component {
   render() {

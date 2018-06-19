@@ -1,41 +1,63 @@
-import React from 'react';
+  import React, {Component} from 'react';
 
-let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=53cf66d3c089556312212a14427c1c84&per_page=12&format=json&nojsoncallback=1&auth_token=72157670220667788-d99aed3053f675ac&api_sig=55092d8b08bd7ef0f4b43849a0fd809f"
+  let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ceeb20e173205666a75dbc47e6852b82&per_page=12&format=json&nojsoncallback=1&auth_token=72157696437573661-7ac8bcdd07c6a56f&api_sig=a0b22c3f565956692078899773e4e78b"
 
-let pictures = "";
+  // function apiCall(){
+  //   var xhr =new XMLHttpRequest();
+  //   xhr.onreadystatechange = function() {
+  //     if (this.readyState === 4 && this.status === 200) {
+  //       let  flickData = JSON.parse(this.responseText);
+  //       console.log(flickData);
+  //       for(let i =0; i < flickData.photos.photo.length; i++){
+  //       let farm = flickData.photos.photo[i].farm;
+  //       let server =flickData.photos.photo[i].server;
+  //       let id = flickData.photos.photo[i].id;
+  //       let secret = flickData.photos.photo[i].secret;
+  //       console.log('<img src="https://farm' + farm+ '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg"/>')
+  //       let pictures = "<img src='https://farm' + farm+ '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg'/>";
+  //     }
+  //       let photoContainer = document.getElementsByClassName('photos-container');
+  //       photoContainer[0].innerHMTL = pictures;
+  //    }
+  //   };
+  //     xhr.open("GET",apiPath);
+  //     xhr.send();
+  // }
+// https://teamtreehouse.com/library/data-fetching-in-react
 
-function apiCall(){
-  var xhr =new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-  if (this.readyState === 4 && this.status === 200) {
-    let  flickData = JSON.parse(this.responseText);
-      console.log(flickData);
-      for(let i =0; i < flickData.photos.photo.length; i++){
-      let farm = flickData.photos.photo[i].farm;
-      let server =flickData.photos.photo[i].server;
-      let id = flickData.photos.photo[i].id;
-      let secret = flickData.photos.photo[i].secret;
-      console.log('<img src="https://farm' + farm+ '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg"/>')
-      pictures = "<img src='https://farm' + farm+ '.staticflickr.com/' + server + '/' + id + '_' + secret + '.jpg'/>";
+
+  class Results extends Component {
+
+    constructor(props){
+      super(props);
+        this.state = {
+          pictures: []
+        };
     }
-    document.getElementsByClassName('photos-container').innerHMTL = pictures;
-   // $("#flickr").append('<img src="https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"/>');
- }
-};
-  xhr.open("GET",apiPath);
-  xhr.send();
-}
+
+    componentDidMount(){
+      fetch(apiPath)
+          .then(res => res.json())
+            .then(
+              (results) => {
+                this.setState({
+                  pictures: results.photos.photo[0]
+                });
+                console.log(results.photos.photo);
+              }
+          )
+          console.log(this.state.pictures);
+    }
 
 
-class Results extends React.Component{
-  render(){
-    apiCall();
 
-    return(
-      <div className ="photos-container">
+    render() {
+      return (
+        <div>
 
-      </div>
-    );
+        </div>
+      );
+    }
   }
-}
- export default Results;
+
+  export default Results;
