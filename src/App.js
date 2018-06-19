@@ -5,9 +5,33 @@ import NoResultsFound from './components/No-results-found';
 import Results from './components/Results';
 import './App.css';
 
+let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5af9c37d3ce5393a73913ec211e7da81&per_page=12&format=json&nojsoncallback=1&auth_token=72157668255059277-2bb26324c333663f&api_sig=708b08b7546dde072435a9b32eaeb651"
 
 class App extends Component {
+
+
+  constructor(props){
+    super(props);
+      this.state = {
+        pictures: []
+      };
+  }
+
+  componentDidMount(){
+    fetch(apiPath)
+        .then(res => res.json())
+          .then(
+            (results) => {
+              this.setState({
+                pictures: results.photos.photo
+              });
+            }
+        ).catch(error => {
+            console.log('Error parsing data', error);
+        });
+  }
   render() {
+    console.log(this.state.pictures);
     return (
       <div className="App">
         <header className="App-header">
@@ -16,7 +40,7 @@ class App extends Component {
         </header>
         <main className="App-main">
           <NoResultsFound />
-          <Results />
+          <Results data={this.state.pictures} />
         </main>
       </div>
     );

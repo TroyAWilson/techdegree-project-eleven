@@ -1,6 +1,6 @@
   import React, {Component} from 'react';
+  import Images from './Images';
 
-  let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ceeb20e173205666a75dbc47e6852b82&per_page=12&format=json&nojsoncallback=1&auth_token=72157696437573661-7ac8bcdd07c6a56f&api_sig=a0b22c3f565956692078899773e4e78b"
 
   // function apiCall(){
   //   var xhr =new XMLHttpRequest();
@@ -26,38 +26,18 @@
 // https://teamtreehouse.com/library/data-fetching-in-react
 
 
-  class Results extends Component {
 
-    constructor(props){
-      super(props);
-        this.state = {
-          pictures: []
-        };
-    }
+  const Results = props => {
 
-    componentDidMount(){
-      fetch(apiPath)
-          .then(res => res.json())
-            .then(
-              (results) => {
-                this.setState({
-                  pictures: results.photos.photo[0]
-                });
-                console.log(results.photos.photo);
-              }
-          )
-          console.log(this.state.pictures);
-    }
-
-
-
-    render() {
+      const resultsData = props.data;
+      let pictures = resultsData.map(data =>
+        <Images url = {"https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + ".jpg"} />
+      );
       return (
         <div>
-
+          {pictures}
         </div>
       );
     }
-  }
 
   export default Results;
