@@ -1,4 +1,4 @@
-  import React, {Component} from 'react';
+  import React from 'react';
   import Images from './Images';
 
 
@@ -31,7 +31,7 @@
 
       const resultsData = props.data;
       let pictures = resultsData.map(data =>
-        <Images url = {"https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + ".jpg"} />
+        <Images key ={data.id} url = {"https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + ".jpg"} />
       );
       return (
         <div className="results-container">

@@ -3,9 +3,11 @@ import Search from './components/Search';
 import Buttons from './components/Buttons';
 import NoResultsFound from './components/No-results-found';
 import Results from './components/Results';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
 
-let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5af9c37d3ce5393a73913ec211e7da81&safe_search=&per_page=12&format=json&nojsoncallback=1&auth_token=72157668255059277-2bb26324c333663f&api_sig=2cb341fbde6895d166e0e8c80572f60e"
+
+let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=cd24edbde9a8d112874583a16bd72c10&tags=cat&safe_search=&per_page=12&format=json&nojsoncallback=1&auth_token=72157668322910227-67cbead9169fce0c&api_sig=d2c42ab7db1f12941004390f110d8e4d"
 
 class App extends Component {
 
@@ -30,17 +32,40 @@ class App extends Component {
             console.log('Error parsing data', error);
         });
   }
+
+
+  searchPics = searchQuery => {
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=cd24edbde9a8d112874583a16bd72c10&tags=${searchQuery}&safe_search=&per_page=12&format=json&nojsoncallback=1&auth_token=72157668322910227-67cbead9169fce0c&api_sig=d2c42ab7db1f12941004390f110d8e4d`)
+        .then(res => res.json())
+          .then(
+            (results) => {
+              this.setState({
+                pictures: results.photos.photo
+              });
+            }
+        ).catch(error => {
+            console.log('Error parsing data', error);
+        });
+  }
+
+
+
   render() {
     console.log(this.state.pictures);
     return (
       <div className="App">
         <header className="App-header">
-          <Search />
+          <Search onSearch={this.searchPics}/>
           <Buttons />
         </header>
-        <main className="App-main">
-          <Results data={this.state.pictures} />
-        </main>
+        <BrowserRouter>
+          <main className="App-main">
+            <Switch>
+              <Route path="/" render={ () => <Results data={this.state.pictures}/>} />
+              <Route component={NoResultsFound}/>
+            </Switch>
+          </main>
+        </BrowserRouter>
       </div>
     );
   }

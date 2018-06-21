@@ -15,6 +15,9 @@
   border: 1px black solid;
   background-color: whitesmoke;
 }
+.main-search::after{
+  content: url('components/search.svg');
+}
 .search-button{
   background-color: #3F8ABF;
   color: white;
@@ -27,7 +30,7 @@
 }
 .search-button:hover{
   cursor: pointer;
-  background-color: #bf3f65;
+  background-color: #245171;
 }
 .results-container{
   display: flex;
