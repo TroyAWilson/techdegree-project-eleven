@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 
 class Search extends React.Component{
@@ -6,13 +6,13 @@ class Search extends React.Component{
       searchText: ''
     }
   onSearchChange = e => {
-      this.setState({searchText: e.target.value });
+      this.setState({searchText: e.target.value});
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.searchPics(this.state.searchText);
-    e.currentTareget.reset();
+    this.props.onSearch(this.state.searchText);
+    // e.currentTareget.reset();
   }
 
   render(){
@@ -20,6 +20,9 @@ class Search extends React.Component{
     return(
       <form onSubmit = {this.handleSubmit}>
         <input className="main-search" type="text" placeholder="Search" onChange={this.onSearchChange} name="search"/>
+        <button type="submit">
+          Search
+        </button>
       </form>
     );
   }

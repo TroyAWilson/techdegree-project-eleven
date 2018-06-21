@@ -41,7 +41,7 @@
 }
 .images-container{
   display: flex;
-  max-width: 31.7%;
+  /* max-width: 31.7%; */
   margin: 10px;
 }
 .images-container img{

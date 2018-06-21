@@ -31,7 +31,7 @@
 
       const resultsData = props.data;
       let pictures = resultsData.map(data =>
-        <Images key ={data.id} url = {"https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + ".jpg"} />
+        <Images key ={data.id} url = {"https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + "_n.jpg"} />
       );
       return (
         <div className="results-container">
