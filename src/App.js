@@ -7,9 +7,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import apiKey from './components/Config';
 import './App.css';
 
-
-// let apiPath = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=cd24edbde9a8d112874583a16bd72c10&tags=cat&safe_search=&per_page=12&format=json&nojsoncallback=1&auth_token=72157668322910227-67cbead9169fce0c&api_sig=d2c42ab7db1f12941004390f110d8e4d"
-
 class App extends Component {
 
 
@@ -21,17 +18,18 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // fetch(apiPath)
-    //     .then(res => res.json())
-    //       .then(
-    //         (results) => {
-    //           this.setState({
-    //             pictures: results.photos.photo
-    //           });
-    //         }
-    //     ).catch(error => {
-    //         console.log('Error parsing data', error);
-    //     });
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=$cat&safe_search=&per_page=24&format=json&nojsoncallback=1`)
+        .then(res => res.json())
+          .then(
+            (results) => {
+                console.log(results);
+              this.setState({
+                pictures: results.photos.photo
+              });
+            }
+        ).catch(error => {
+            console.log('Error parsing data', error);
+        });
   }
 
 
@@ -49,7 +47,6 @@ class App extends Component {
             console.log('Error parsing data', error);
         });
   }
-
 
 
   render() {
