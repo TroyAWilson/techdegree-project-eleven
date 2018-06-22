@@ -20,8 +20,7 @@ class Search extends React.Component{
     return(
       <form onSubmit = {this.handleSubmit}>
         <input className="main-search" type="text" placeholder="Search" onChange={this.onSearchChange} name="search"/>
-        <button type="submit">
-          Search
+        <button className="search-button-icon" type="submit">
         </button>
       </form>
     );

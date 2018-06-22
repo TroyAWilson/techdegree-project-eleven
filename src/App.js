@@ -5,6 +5,7 @@ import NoResultsFound from './components/No-results-found';
 import Results from './components/Results';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import apiKey from './components/Config';
+
 import './App.css';
 
 class App extends Component {
@@ -55,7 +56,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Search onSearch={this.searchPics}/>
-          <Buttons />
+          <Buttons onClick={this.searchPics}/>
         </header>
         <BrowserRouter>
           <main className="App-main">
