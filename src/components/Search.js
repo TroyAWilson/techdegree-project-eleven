@@ -12,7 +12,7 @@ class Search extends React.Component{
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.state.searchText);
-    // e.currentTareget.reset();
+    e.currentTarget.reset();
   }
 
   render(){
