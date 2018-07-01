@@ -23,14 +23,20 @@ a{
   content: url('components/search.svg');
 }
 .search-button{
+  list-style: none;
   background-color: #3F8ABF;
   color: white;
   border: none;
   margin: 0 5px;
-  padding: 10px 25px;
+  padding: 5px 15px;
   border-radius: 10px;
   transition: .5s ease-out;
   font-size: 1.15em;
+}
+.search-buttons-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search-button:hover{
   cursor: pointer;

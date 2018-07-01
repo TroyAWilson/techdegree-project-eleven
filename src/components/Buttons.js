@@ -8,13 +8,14 @@ class Buttons extends React.Component{
   }
 
 onButtonClick = e => {
-    console.log(e.target.text);
-    this.setState({buttonText: e.target.text});
+    this.setState({buttonText: e.target.text},
+    function () {this.props.onClick(this.state.buttonText);});
 }
 
 handleSubmit = e => {
+  console.log(e.target);
   e.preventDefault();
-  this.props.onClick(this.state.buttonText);
+  // this.props.onClick(this.state.buttonText);
 }
 
 
@@ -22,13 +23,13 @@ handleSubmit = e => {
     return(
       <BrowserRouter >
         <Route>
-          <form className="search-buttons-container" onClick={this.handleSubmit}>
-            <button onClick={this.onButtonClick} className="search-button"><Link to="/cat">Cat</Link></button>
+          <ul className="search-buttons-container" onClick={this.handleSubmit}>
+            <li onClick={this.onButtonClick} className="search-button"><Link onClick={this.onButtonClick} to="/cat">Cat</Link></li>
 
-            <button onClick={this.onButtonClick} className="search-button"><Link to="/dog">Dog</Link></button>
+            <li onClick={this.onButtonClick} className="search-button"><Link to="/dog">Dog</Link></li>
 
-            <button onClick={this.onButtonClick} className="search-button"><Link to="/coffee">Coffee</Link></button>
-          </form>
+            <li onClick={this.onButtonClick} className="search-button"><Link to="/coffee">Coffee</Link></li>
+          </ul>
         </Route>
       </BrowserRouter>
     );
